@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(5, 150, 5, 20),
+            padding: const EdgeInsets.fromLTRB(5, 110, 5, 20),
             child: Image.asset('images/photo-main.jpg'),
           ),
           Padding(
@@ -41,13 +41,37 @@ class HomePage extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  Text(
-                    'Find your daily necessity at Brand. The Word`s largest fashion'
-                    ' e-commerce has arrived in a mobile shop now!',
-                    style: Theme.of(context).textTheme.titleSmall,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                    child: Text(
+                      'Find your daily necessity at Brand. The Word`s largest fashion'
+                      ' e-commerce has arrived in a mobile shop now!',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
                   ),
-                  FilledButton(onPressed: () {}, child: const Text('Login'),
-
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                    child: FilledButton(
+                      onPressed: () {},
+                      style: Theme.of(context).filledButtonTheme.style,
+                      child: const Text('Login'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
+                    child: FilledButton(
+                      onPressed: () {},
+                      style:
+                          Theme.of(context).filledButtonTheme.style!.copyWith(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                                foregroundColor:
+                                    MaterialStateProperty.all(Colors.black),
+                                side: MaterialStateProperty.all(
+                                    const BorderSide(color: Colors.black)),
+                              ),
+                      child: const Text('Register'),
+                    ),
                   ),
                 ],
               )),

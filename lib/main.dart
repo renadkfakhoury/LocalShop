@@ -23,9 +23,18 @@ class MyApp extends StatelessWidget {
             ),
             titleMedium: TextStyle(),
             titleSmall: TextStyle(
+              color: Colors.grey,
               fontSize: 16,
             )),
-        elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle()),
+        filledButtonTheme: FilledButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+            minimumSize: MaterialStateProperty.all(
+              Size(MediaQuery.of(context).size.width * 10.0, 55.0),
+            ),
+          ),
+        ),
       ),
       home: const HomePage(),
     );
