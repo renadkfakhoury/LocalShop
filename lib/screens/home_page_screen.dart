@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:local_shop/screens/login_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -52,7 +53,12 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
                     child: FilledButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
+                      },
                       style: Theme.of(context).filledButtonTheme.style,
                       child: const Text('Login'),
                     ),
