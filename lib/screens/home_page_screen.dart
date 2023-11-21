@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
             child: Image.asset('images/photo-main.jpg'),
           ),
           Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
