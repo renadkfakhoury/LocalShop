@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
             foregroundColor: MaterialStateProperty.all(Colors.white),
             minimumSize: MaterialStateProperty.all(
-              Size(MediaQuery.of(context).size.width * 10.0, 55.0),
+              Size(MediaQuery.of(context).size.width * 10.0, 57.0),
             ),
           ),
         ),

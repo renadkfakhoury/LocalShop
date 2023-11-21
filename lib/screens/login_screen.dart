@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_shop/screens/home_page_screen.dart';
+import 'package:local_shop/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -167,7 +168,13 @@ class LoginScreen extends StatelessWidget {
                             ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterScreen(),
+                              ));
+                        },
                         child: Text(
                           'Register',
                           style:
@@ -180,7 +187,7 @@ class LoginScreen extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
