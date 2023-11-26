@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:local_shop/screens/opt_verification_screen.dart';
 
-class NewPasswordScreen extends StatelessWidget {
+class NewPasswordScreen extends StatefulWidget {
   const NewPasswordScreen({super.key});
+
+  @override
+  State<NewPasswordScreen> createState() => _NewPasswordScreenState();
+}
+
+class _NewPasswordScreenState extends State<NewPasswordScreen> {
+  bool _passwordShow = true;
+  bool _confarmPasswordShow = true;
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +62,18 @@ class NewPasswordScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _passwordShow,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.remove_red_eye),
-                        onPressed: () {},
+                        icon: _passwordShow
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _passwordShow = !_passwordShow;
+                          });
+                        },
                       ),
                       fillColor: Colors.grey,
                       hintText: 'Enter your Password',
@@ -73,10 +89,18 @@ class NewPasswordScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _confarmPasswordShow,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.remove_red_eye),
-                        onPressed: () {},
+                        icon: _confarmPasswordShow
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _confarmPasswordShow = !_confarmPasswordShow;
+                          });
+                        },
                       ),
                       fillColor: Colors.grey,
                       hintText: 'Enter Confirm Password',

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:local_shop/screens/home_page_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  bool _passwordShow = true;
+  bool _confirmPasswordShow = true;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +66,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.name,
                     decoration: InputDecoration(
                       fillColor: Colors.grey,
                       hintText: 'Enter your name',
@@ -73,6 +82,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       fillColor: Colors.grey,
                       hintText: 'Enter your Email',
@@ -88,10 +98,17 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.remove_red_eye),
-                        onPressed: () {},
+                        icon: _passwordShow
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _passwordShow = !_passwordShow;
+                          });
+                        },
                       ),
                       fillColor: Colors.grey,
                       hintText: 'Enter your Password',
@@ -107,10 +124,17 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   TextField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.remove_red_eye),
-                        onPressed: () {},
+                        icon: _confirmPasswordShow
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _confirmPasswordShow = !_confirmPasswordShow;
+                          });
+                        },
                       ),
                       fillColor: Colors.grey,
                       hintText: 'Enter your Password',

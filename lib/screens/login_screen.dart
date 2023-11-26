@@ -3,36 +3,46 @@ import 'package:local_shop/screens/forgot_password_screen.dart';
 import 'package:local_shop/screens/home_page_screen.dart';
 import 'package:local_shop/screens/register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _passwordShow = true;
+  String _helperTextEmail =
+      'This is the email address you will use to sign in to your account.';
+
+  //String _helperTextPassword = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          margin: const EdgeInsets.all(7),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios_new_outlined,
-              size: 20,
+        appBar: AppBar(
+          leading: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            color: Colors.black,
-            onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },
+            margin: const EdgeInsets.all(7),
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new_outlined,
+                size: 20,
+              ),
+              color: Colors.black,
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        body: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const SizedBox(height: 10),
             Center(
               child: Image.asset(
@@ -59,27 +69,57 @@ class LoginScreen extends StatelessWidget {
                     'Email',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  TextField(
+                  TextFormField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       fillColor: Colors.grey,
                       hintText: 'Enter your Email',
+                      helperText: _helperTextEmail,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.isEmpty) {
+                          _helperTextEmail = 'Please enter your email address';
+                        } else if (!RegExp(r'^.+@.+\..+$').hasMatch(value)) {
+                          _helperTextEmail =
+                              'Please enter a valid email address';
+                        } else {
+                          _helperTextEmail = '';
+                        }
+                      });
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email address';
+                      } else if (!RegExp(r'^.+@.+\..+$').hasMatch(value)) {
+                        return 'Please enter a valid email address';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 10),
                   Text(
                     'Password',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  TextField(
+                  TextFormField(
                     style: Theme.of(context).textTheme.titleSmall,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _passwordShow,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.remove_red_eye),
-                        onPressed: () {},
+                        icon: _passwordShow == true
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _passwordShow = !_passwordShow;
+                          });
+                        },
                       ),
                       fillColor: Colors.grey,
                       hintText: 'Enter your Password',
@@ -94,7 +134,7 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       TextButton(
                         child: Text(
-                          'ForgetPassword? ',
+                          'Forget Password? ',
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                         onPressed: () {
@@ -200,9 +240,7 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          ]),
+        ));
   }
 }
