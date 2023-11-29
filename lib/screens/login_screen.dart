@@ -14,8 +14,10 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _passwordShow = true;
   String _helperTextEmail =
       'This is the email address you will use to sign in to your account.';
-
-  //String _helperTextPassword = '';
+  final _controllerEmail = TextEditingController();
+  final _controllerPassword = TextEditingController();
+  bool _validateEmail = false;
+  bool _validatePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     style: Theme.of(context).textTheme.titleSmall,
                     keyboardType: TextInputType.emailAddress,
+                    controller: _controllerEmail,
                     decoration: InputDecoration(
                       fillColor: Colors.grey,
                       hintText: 'Enter your Email',
                       helperText: _helperTextEmail,
+                      errorText: _validateEmail ? "Value Can't Be Empty" : null,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -110,7 +114,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.titleSmall,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _passwordShow,
+                    controller: _controllerPassword,
                     decoration: InputDecoration(
+                      errorText:
+                          _validatePassword ? "Value Can't Be Empty" : null,
                       suffixIcon: IconButton(
                         icon: _passwordShow == true
                             ? const Icon(Icons.visibility)
@@ -154,10 +161,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
                     child: FilledButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginScreen()));
+                        setState(() {
+                          _validatePassword = _controllerPassword.text.isEmpty;
+                          _validateEmail = _controllerEmail.text.isEmpty;
+                        });
                       },
                       style: Theme.of(context).filledButtonTheme.style,
                       child: const Text('Login'),
@@ -230,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Register',
                           style:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
                                     color: Colors.blueAccent,
                                   ),
                         ),
