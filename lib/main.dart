@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:local_shop/screens/home_page_screen.dart';
 
 void main() {
@@ -19,19 +20,22 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           fillColor: Colors.grey[200],
         ),
-        textTheme: const TextTheme(
-            titleLarge: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-            titleMedium: TextStyle(
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
-            ),
-            titleSmall: TextStyle(
-              color: Colors.grey,
-              fontSize: 16,
-            )),
+        textTheme: GoogleFonts.latoTextTheme(Typography.blackHelsinki).copyWith(
+          titleLarge: GoogleFonts.oswald(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          titleMedium: GoogleFonts.oswald(
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          titleSmall: GoogleFonts.oswald(
+            color: Colors.black38,
+            fontSize: 16,
+          ),
+        ),
         filledButtonTheme: FilledButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blueAccent),

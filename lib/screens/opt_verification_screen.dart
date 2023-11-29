@@ -89,7 +89,7 @@ class OPTVerificationScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Don`t Received code ?',
+                        'Didn`t Received code ?',
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               color: Colors.black,
                             ),

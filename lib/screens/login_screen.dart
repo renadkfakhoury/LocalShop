@@ -135,7 +135,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -178,9 +177,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.grey,
                         ),
                       ),
-                      Text(
-                        'Or Login With',
-                        style: Theme.of(context).textTheme.titleSmall,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Or Login With',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                       ),
                       const Expanded(
                         child: Divider(
@@ -190,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
                         icon: const Icon(
