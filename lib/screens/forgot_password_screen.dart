@@ -77,7 +77,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                                     const OPTVerificationScreen()));
                       },
                       style: Theme.of(context).filledButtonTheme.style,
-                      child: const Text('Send Code'),
+                      child: const Text('Send Code',
+                          style: TextStyle(fontSize: 17)),
                     ),
                   ),
                 ],

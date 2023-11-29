@@ -115,7 +115,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                     child: FilledButton(
                       onPressed: () {},
                       style: Theme.of(context).filledButtonTheme.style,
-                      child: const Text('Reset Password'),
+                      child: const Text('Reset Password',style: TextStyle(fontSize: 17)),
                     ),
                   ),
                 ],

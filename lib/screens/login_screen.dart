@@ -167,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                       style: Theme.of(context).filledButtonTheme.style,
-                      child: const Text('Login'),
+                      child: const Text('Login',style: TextStyle(fontSize: 17)),
                     ),
                   ),
                   const SizedBox(height: 10),

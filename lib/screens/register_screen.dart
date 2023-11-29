@@ -149,7 +149,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: FilledButton(
                       onPressed: () {},
                       style: Theme.of(context).filledButtonTheme.style,
-                      child: const Text('Register'),
+                      child: const Text('Register',
+                          style: TextStyle(fontSize: 17)),
                     ),
                   ),
                 ],

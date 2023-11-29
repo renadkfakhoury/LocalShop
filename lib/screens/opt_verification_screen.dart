@@ -60,6 +60,7 @@ class OPTVerificationScreen extends StatelessWidget {
                             child: Padding(
                           padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
                           child: TextField(
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                             ),
@@ -79,7 +80,8 @@ class OPTVerificationScreen extends StatelessWidget {
                             ));
                       },
                       style: Theme.of(context).filledButtonTheme.style,
-                      child: const Text('Verify'),
+                      child:
+                          const Text('Verify', style: TextStyle(fontSize: 17)),
                     ),
                   ),
                   const SizedBox(height: 10),

@@ -31,9 +31,10 @@ class HomePage extends StatelessWidget {
                         ),
                         Text(
                           'shop',
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.normal,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.normal,
+                                  ),
                         ),
                       ]),
                     ),
@@ -62,7 +63,8 @@ class HomePage extends StatelessWidget {
                                   builder: (context) => const LoginScreen()));
                         },
                         style: Theme.of(context).filledButtonTheme.style,
-                        child: const Text('Login'),
+                        child:
+                            const Text('Login', style: TextStyle(fontSize: 17)),
                       ),
                     ),
                     Padding(
@@ -84,7 +86,8 @@ class HomePage extends StatelessWidget {
                                   side: MaterialStateProperty.all(
                                       const BorderSide(color: Colors.black)),
                                 ),
-                        child: const Text('Register'),
+                        child: const Text('Register',
+                            style: TextStyle(fontSize: 17)),
                       ),
                     ),
                   ],
